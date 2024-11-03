@@ -3,7 +3,34 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 html , body{
     height: 100%;
-    width: 100%;
+    width: 100%;   
+}
+.cal-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.center{text-align: center;}
+button{
+    height: 50px;
+    width: 50px;
+    background-color: grey;
+    margin-top:2px;
+    font-size: 25px;
+}
+.double-width{
+    width: 104px;
+}
+.display{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 25px;
+    color: #000;
+    background-color: greenyellow;
+    height: 50px;
+    width: 215px;   
 }
