@@ -10,13 +10,5 @@ let secondNummber;
 let display = document.querySelector(".display");
 let displayvalue ='';
 
-let btns = document.querySelectorAll("button")
-btns.forEach((btn)=>{
-    btn.addEventListener("click", (e)=>{
-        console.log(e.target.value)
-        let value = e.target.value
-            displayvalue += value
-            display.textContent = displayvalue
-    })
-})
+
 
