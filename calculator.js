@@ -1,70 +1,3 @@
-// let add = (a,b)=> a + b ;
-// let subtract = (a,b) => a - b;
-// let multiply = (a,b)=> a * b;
-// let divide = (a,b)=> a/b;
-
-// let firstNumber =null;
-// let operator = "";
-// let secondNumber=null;
-// let buttons = document.querySelectorAll("button");
-
-// let display = document.querySelector(".display");
-// let displayvalue = []
-
-
-// function operate(a, operator, b) {
-//     switch (operator) {
-//         case "+":
-//         return add(a, b);
-//         case "-":
-//         return subtract(a, b);
-//         case "*":
-//         return multiply(a, b);
-//         case "/":
-//         if (b === 0) {
-//          return "Not a valid number";
-//         }
-//         return divide(a, b);
-//         default:
-//          return "Invalid operator";
-//         }
-//         }
-                   
-        
-//     buttons.forEach((button)=>{
-//          button.addEventListener("click" , (e)=>{
-
-//             let value = parseFloat(e.target.value);
-//                         if(!isNaN(value)){
-//                             displayvalue.push(value)
-//                             display.textContent = displayvalue.join('')
-//                         }
-//                             if(['+','-','/','*'].includes(value)){
-//                                 if(firstNumber === null){
-//                                     firstNumber = parseFloat(displayvalue.join(''))
-//                                 }
-//                                 else{
-//                                     secondNumber = parseFloat(displayvalue.join(''));
-//                                     firstNumber = operate(firstNumber,operator,secondNumber);
-//                                     display.textContent = firstNumber;
-//                                 }
-//                                 operator = value;
-//                                 displayvalue = []
-//                             }
-
-//                             if( value=== "="){
-//                                 if(firstNumber !== null &&operator && displayvalue.length > 0){
-//                                     secondNumber = parseFloat(displayvalue.join(''));
-//                                     const result = operate(firstNumber,operator,secondNumber);
-//                                     display.textContent = result;
-//                                     firstNumber = result;
-//                                     operator =''
-//                                     displayvalue =[]
-//                                 }
-//                             }
-
-//                         })
-//                     })
 
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
@@ -75,7 +8,7 @@ let firstNumber = null;
 let operator = "";
 let secondNumber = null;
 let buttons = document.querySelectorAll("button");
-
+let hasDecimal = false
 let display = document.querySelector(".display");
 let displayValue = [];
 
@@ -100,6 +33,15 @@ function calculate(a, operator, b) {
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
         let value = e.target.value;
+            // Handles . button
+        if (value === "."){
+            if(!hasDecimal){
+                displayValue.push(value)
+                display.textContent = displayValue.join('')
+                hasDecimal = true
+            }
+            return;
+        }
 
         // If the button is a number
         if (!isNaN(value)) {
@@ -124,7 +66,7 @@ buttons.forEach((button) => {
         if (value === "=") {
             if (firstNumber !== null && operator && displayValue.length > 0) {
                 secondNumber = parseFloat(displayValue.join(''));
-                const result = calculate(firstNumber, operator, secondNumber);
+                const result =Math.round(calculate(firstNumber, operator, secondNumber));
                 display.textContent = result; // Show result
                 firstNumber = result; // Set firstNumber to result for further calculations
                 operator = ""; // Reset operator
@@ -146,5 +88,7 @@ buttons.forEach((button) => {
                     displayValue.pop()
                     display.textContent = displayValue.join('')
             }
+        
     });
+
 });
