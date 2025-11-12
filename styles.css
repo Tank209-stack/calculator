@@ -26,7 +26,7 @@ button{
     width: 50px;
     background-color: grey;
     margin-top:2px;
-    font-size: 25px;
+    font-size: 28px;
     cursor: pointer;
 }
 button:hover {
@@ -40,7 +40,7 @@ button:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 25px;
+    font-size: 28px;
     color: #000;
     border-radius: 10px;
     background-color:#ffff;
